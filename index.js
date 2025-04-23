@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const reviewForm = document.getElementById('review-form');
     const reviewsContainer = document.getElementById('reviews-container');
-    const REVIEWS_API_URL = 'http://localhost:3000/reviews'; // Updated endpoint
+    const REVIEWS_API_URL = 'https://shee-store-server.vercel.app/reviews'; 
   
     loadReviews();
   
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        displayReviews(data); // Use data directly, JSON Server returns an array
+        displayReviews(data); 
       } catch (error) {
         console.error('Failed to load reviews:', error);
         reviewsContainer.innerHTML = '<p class="error">Failed to load reviews.</p>';
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        loadReviews(); // Refresh the list after posting
+        loadReviews(); 
       } catch (error) {
         console.error('Failed to submit review:', error);
         alert('Failed to submit review. Please try again.');
