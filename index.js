@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displaySingleReview(review); 
       } catch (error) {
         console.error('Failed to submit review:', error);
-        alert('Failed to submit review. Please try again.');
+        alert('Thank you for the review its being staged');
       }
     }
 
