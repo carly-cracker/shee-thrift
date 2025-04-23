@@ -88,40 +88,60 @@ document.addEventListener('DOMContentLoaded', () => {
         reviewsContainer.appendChild(reviewCard);
       }
   
-    function displayReviews(reviews) {
-      reviewsContainer.innerHTML = '';
-      if (reviews.length === 0) {
-        reviewsContainer.innerHTML = '<p class="no-reviews">No reviews yet. Be the first to leave one!</p>';
-        return;
+      let currentReviewIndex = 0; // Global variable to track how many reviews are shown
+      let allReviews = []; // To store all loaded reviews
+      
+      function displayReviews(reviews) {
+        reviewsContainer.innerHTML = '';
+        allReviews = reviews;
+        currentReviewIndex = 0;
+      
+        const viewMoreBtn = document.createElement('button');
+        viewMoreBtn.textContent = 'View More Reviews';
+        viewMoreBtn.id = 'view-more-btn';
+        viewMoreBtn.classList.add('view-more-btn');
+      
+        function renderNextReviews() {
+          const nextReviews = allReviews.slice(currentReviewIndex, currentReviewIndex + 5);
+      
+          nextReviews.forEach(review => {
+            const reviewCard = document.createElement('div');
+            reviewCard.classList.add('review-card');
+      
+            const nameHeading = document.createElement('h4');
+            nameHeading.textContent = review.name;
+      
+            const ratingStars = '★'.repeat(parseInt(review.rating)) + '☆'.repeat(5 - parseInt(review.rating));
+            const ratingSpan = document.createElement('p');
+            ratingSpan.classList.add('rating');
+            ratingSpan.textContent = ratingStars;
+      
+            const commentParagraph = document.createElement('p');
+            commentParagraph.textContent = review.comment;
+      
+            const dateParagraph = document.createElement('p');
+            dateParagraph.classList.add('review-date');
+            dateParagraph.textContent = `Reviewed on: ${review.date}`;
+      
+            reviewCard.appendChild(nameHeading);
+            reviewCard.appendChild(ratingSpan);
+            reviewCard.appendChild(commentParagraph);
+            reviewCard.appendChild(dateParagraph);
+            reviewsContainer.appendChild(reviewCard);
+          });
+      
+          currentReviewIndex += nextReviews.length;
+      
+          if (currentReviewIndex >= allReviews.length) {
+            viewMoreBtn.remove();
+          }
+        }
+      
+        renderNextReviews(); // Show first 5 reviews
+      
+        viewMoreBtn.addEventListener('click', renderNextReviews);
+        reviewsContainer.appendChild(viewMoreBtn);
       }
-  
-      reviews.forEach(review => {
-        const reviewCard = document.createElement('div');
-        reviewCard.classList.add('review-card');
-  
-        const nameHeading = document.createElement('h4');
-        nameHeading.textContent = review.name;
-  
-        const ratingStars = '★'.repeat(parseInt(review.rating)) + '☆'.repeat(5 - parseInt(review.rating));
-        const ratingSpan = document.createElement('p');
-        ratingSpan.classList.add('rating');
-        ratingSpan.textContent = ratingStars;
-  
-        const commentParagraph = document.createElement('p');
-        commentParagraph.textContent = review.comment;
-  
-        const dateParagraph = document.createElement('p');
-        dateParagraph.classList.add('review-date');
-        dateParagraph.textContent = `Reviewed on: ${review.date}`;
-  
-        reviewCard.appendChild(nameHeading);
-        reviewCard.appendChild(ratingSpan);
-        reviewCard.appendChild(commentParagraph);
-        reviewCard.appendChild(dateParagraph);
-        reviewsContainer.appendChild(reviewCard);
-      });
-    }
-  });
   const searchInput = document.getElementById('searchInput');
   const searchButton = document.getElementById('searchButton');
   const categoryCards = document.querySelectorAll('.shop .categories .card');
