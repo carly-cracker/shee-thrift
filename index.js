@@ -93,4 +93,37 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-  
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
+  const categoryCards = document.querySelectorAll('.shop .categories .card');
+
+  function filterCards(searchTerm) {
+    const lowercasedSearchTerm = searchTerm.toLowerCase();
+
+    categoryCards.forEach(card => {
+      const categoryText = card.querySelector('p').textContent.toLowerCase();
+      const categoryData = card.dataset.category ? card.dataset.category.toLowerCase() : '';
+      const altText = card.querySelector('img').alt.toLowerCase();
+
+      if (categoryText.includes(lowercasedSearchTerm) || categoryData.includes(lowercasedSearchTerm) || altText.includes(lowercasedSearchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener('click', () => {
+      const searchTerm = searchInput.value.trim();
+      filterCards(searchTerm);
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.trim();
+      filterCards(searchTerm);
+    });
+  }
+});
