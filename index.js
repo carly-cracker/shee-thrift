@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        displayReviews(data); 
+        displayReviews(data.reviews); 
       } catch (error) {
         console.error('Failed to load reviews:', error);
         reviewsContainer.innerHTML = '<p class="error">Failed to load reviews.</p>';
