@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log("Submitting review:", review);
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      displaySingleReview(review);
+      const savedReview = await response.json();
+
+      allReviews.unshift(savedReview); 
+    displaySingleReview(savedReview)
     } catch (error) {
       console.error('Failed to submit review:', error);
       alert('Thank you for the review, it’s being staged.');
