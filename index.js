@@ -49,15 +49,44 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify(review),
         });
+        console.log("Submitting review:", JSON.stringify(review));
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        loadReviews(); 
+        
+        displaySingleReview(review); 
       } catch (error) {
         console.error('Failed to submit review:', error);
         alert('Failed to submit review. Please try again.');
       }
     }
+
+    function displaySingleReview(review) {
+        const reviewCard = document.createElement('div');
+        reviewCard.classList.add('review-card');
+      
+        const nameHeading = document.createElement('h4');
+        nameHeading.textContent = review.name;
+      
+        const ratingStars = '★'.repeat(parseInt(review.rating)) + '☆'.repeat(5 - parseInt(review.rating));
+        const ratingSpan = document.createElement('p');
+        ratingSpan.classList.add('rating');
+        ratingSpan.textContent = ratingStars;
+      
+        const commentParagraph = document.createElement('p');
+        commentParagraph.textContent = review.comment;
+      
+        const dateParagraph = document.createElement('p');
+        dateParagraph.classList.add('review-date');
+        dateParagraph.textContent = `Reviewed on: ${review.date}`;
+      
+        reviewCard.appendChild(nameHeading);
+        reviewCard.appendChild(ratingSpan);
+        reviewCard.appendChild(commentParagraph);
+        reviewCard.appendChild(dateParagraph);
+        reviewsContainer.appendChild(reviewCard);
+      }
   
     function displayReviews(reviews) {
       reviewsContainer.innerHTML = '';
