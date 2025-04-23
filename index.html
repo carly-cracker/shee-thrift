@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHEE'S THRIFT STORE</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Shee's Thrift Store</div>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="about-us.html">About</a>
+      <a href="contact-us.html">Contact-us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-images">
+      <img src="https://i.pinimg.com/236x/d2/31/41/d23141ddc4ff9f50a156ea61a26d2561.jpg" alt="Clothes" />
+      <img src="https://i.pinimg.com/236x/69/49/00/694900f31c1420bba7eef6ccb81dc3bd.jpg" alt="Utensils" />
+      <img src="https://i.pinimg.com/236x/e2/ac/85/e2ac8573878a0dc2e30b22b0674ce13c.jpg" alt="Electronics" />
+    </div>
+    <div class="hero-text">
+      <h1>Affordable. Reliable. Thrifted Treasures.</h1>
+      <div class="buttons">
+        <a href="#shop" class="btn">Shop Now</a>
+        <a href="#contact" class="btn btn-outline">Visit Store</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="shop">
+    <h2>Shop</h2>
+    <div class="categories">
+      <div class="card">
+        <img src="https://i.pinimg.com/236x/96/c0/c1/96c0c195c2824f856f6904f081cdc729.jpg" alt="Clothes" />
+        <p>Clothes</p>
+      </div>
+      <div class="card">
+        <img src="https://i.pinimg.com/236x/81/95/ed/8195ed32c9ef7832209203972a555e3d.jpg" alt="Utensils" />
+        <p>Utensils</p>
+      </div>
+      <div class="card">
+        <img src="https://i.pinimg.com/474x/ce/3c/ae/ce3caec2de4a95e98d1a3907482cd246.jpg" alt="Carpets" />
+        <p>Carpets & Rugs</p>
+      </div>
+      <div class="card">
+        <img src="https://i.pinimg.com/236x/e2/ac/85/e2ac8573878a0dc2e30b22b0674ce13c.jpg" alt="Electronics" />
+        <p>Electronics</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <h2>Client Reviews</h2>
+    <div class="add-review">
+      <h3>Leave a Review</h3>
+      <form id="review-form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="rating">Rating:</label>
+          <select id="rating" name="rating">
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea id="comment" name="comment" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit Review</button>
+      </form>
+    </div>
+
+    <div class="customer-reviews">
+      <h3>What Our Clients Say</h3>
+      <div id="reviews-container">
+        </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Call or WhatsApp: +254 700 000 000</p>
+    <p>Email: info@sheesthrift.co.ke</p>
+    <p>Location: Nairobi, Kenya</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Shee's thrift store. All rights reserved.</p>
+  </footer>
+  <script src="index.js"></script> 
+</body>
+</html>
